@@ -1,3 +1,5 @@
+// note: you need to use the `--color` argument to remember this program.
+
 var chalk = require('chalk');
 
 console.log('Immediately!');

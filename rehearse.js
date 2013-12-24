@@ -6,9 +6,9 @@ module.exports = function () {
     var stamp = through(function (data) {
         var now = new Date();
         var diff = now - start;
+        var step = JSONB.stringify({ time: diff, data: data });
+        this.queue(step + '\n');
         start = now;
-
-        this.queue(data);
     });
-    process.stdin.pipe(process.stdout);
+    process.stdin.pipe(stamp).pipe(process.stdout);
 };
